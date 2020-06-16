@@ -3,7 +3,7 @@
  */
 package hu.arh.anprcloud.client.model;
 
-import java.io.File;
+import java.io.InputStream;
 import java.io.Serializable;
 import javax.annotation.Generated;
 
@@ -22,7 +22,11 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
 
     private String location;
 
-    private File image;
+    private String mimeType;
+
+    private String imageName;
+
+    private InputStream image;
 
     private Type type = Type.ANPR;
 
@@ -89,17 +93,39 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
      *
      * @return the value of image
      */
-    public File getImage() {
+    public InputStream getImage() {
         return image;
     }
 
     /**
-     * Set the value of image
+     * Get the value of mimeType
+     *
+     * @return the value of mimeType
+     */
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    /**
+     * Get the value of imageName
+     *
+     * @return the value of imageName
+     */
+    public String getImageName() {
+        return imageName;
+    }
+
+    /**
+     * Set the value of image, imageName, and mimeType
      *
      * @param image new value of image
+     * @param imageName new value of imageName
+     * @param mimeType new value of mimeType
      */
-    public void setImage(File image) {
+    public void setImage(InputStream image, String imageName, String mimeType) {
         this.image = image;
+        this.imageName = imageName;
+        this.mimeType = mimeType;
     }
 
     /**
@@ -138,11 +164,13 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
 
     /**
      * @param image
+     * @param imageName
+     * @param mimeType
      * @return Returns a reference to this object so that method calls can be
      * chained together.
      */
-    public ANPRCloudRequest image(File image) {
-        setImage(image);
+    public ANPRCloudRequest image(InputStream image, String imageName, String mimeType) {
+        setImage(image, imageName, mimeType);
         return this;
     }
 
@@ -172,7 +200,10 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
             sb.append("Location: ").append(getLocation()).append(",");
         }
         if (getImage() != null) {
-            sb.append("Image: ").append(getImage()).append(" (exists: ").append(getImage().exists()).append(")");
+            sb.append("ImageName: ").append(getImageName()).append(",");
+        }
+        if (getMimeType() != null) {
+            sb.append("MimeType: ").append(getMimeType());
         }
         sb.append("}");
         return sb.toString();
@@ -209,6 +240,18 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
         if (other.getImage() != null && other.getImage().equals(this.getImage()) == false) {
             return false;
         }
+        if (other.getImageName() == null ^ this.getImageName() == null) {
+            return false;
+        }
+        if (other.getImageName() != null && other.getImageName().equals(this.getImageName()) == false) {
+            return false;
+        }
+        if (other.getMimeType() == null ^ this.getMimeType() == null) {
+            return false;
+        }
+        if (other.getMimeType() != null && other.getMimeType().equals(this.getMimeType()) == false) {
+            return false;
+        }
         return true;
     }
 
@@ -220,6 +263,8 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode());
         hashCode = prime * hashCode + ((getImage() == null) ? 0 : getImage().hashCode());
+        hashCode = prime * hashCode + ((getImageName() == null) ? 0 : getImageName().hashCode());
+        hashCode = prime * hashCode + ((getMimeType() == null) ? 0 : getMimeType().hashCode());
         return hashCode;
     }
 

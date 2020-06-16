@@ -17,6 +17,7 @@ import hu.arh.anprcloud.client.model.InternalServerErrorException;
 import hu.arh.anprcloud.client.model.RequestTimeoutException;
 import hu.arh.anprcloud.client.model.ServiceUnavailableException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -43,8 +44,8 @@ import org.apache.logging.log4j.Logger;
  */
 public class ANPRCloudTest {
 
-    private static final int THREAD_COUNT = 100;
-    private static final int TASK_COUNT = 1000;
+    private static final int THREAD_COUNT = 1;
+    private static final int TASK_COUNT = 20;
     private static final int RETRY_COUNT = 10;
     private static final ExecutorService taskPool = Executors.newFixedThreadPool(THREAD_COUNT);
     private static final ExecutorService processPool = Executors.newFixedThreadPool(THREAD_COUNT * 5);
@@ -88,7 +89,7 @@ public class ANPRCloudTest {
 
         ANPRCloudConfig.getConfig()
                 .endpoint(RuntimeHttpUtils.toUri("api-eu.anpr-cloud.com", Protocol.HTTPS))
-                .stage("/dev")
+                .stage("/free")
                 .withThrottledRetries(false);
 
         ANPRCloudService service = ANPRCloudService.builder()
@@ -105,6 +106,7 @@ public class ANPRCloudTest {
                                 ServiceUnavailableException.class,
                                 RequestTimeoutException.class,
                                 InternalServerErrorException.class)
+                        .retryOnStatusCodes(429)
                         .maxNumberOfRetries(RETRY_COUNT)
                         .backoffStrategy((RetryPolicyContext context) -> {
                             AtomicInteger i = retries.get(context.totalRequests());
@@ -196,7 +198,8 @@ public class ANPRCloudTest {
             List<Path> imageFiles = Files.list(imgDir).collect(Collectors.toList());
             Path img = imageFiles.get((int) (imageFiles.size() * Math.random()));
             processRequest.setLocation(imgDir.toFile().getName());
-            processRequest.setImage(img.toFile());
+            File imgFile = img.toFile();
+            processRequest.setImage(new FileInputStream(imgFile), imgFile.getName(), Files.probeContentType(img));
             processRequest.setType(threadCount % 2 == 0 ? ANPRCloudRequest.Type.ANPR : ANPRCloudRequest.Type.MMR);
             //processRequest.setType(ANPRCloudRequest.Type.ANPR);
             LOGGER.log(Level.INFO, "{} {}. call: {}", threadName, threadCount, processRequest);
@@ -222,7 +225,7 @@ public class ANPRCloudTest {
                     } else {
                         AtomicBoolean found = new AtomicBoolean(false);
                         result.getAnswer().getData().getPlates().forEach((plate) -> {
-                            String imgname = processRequest.getImage().getName();
+                            String imgname = processRequest.getImageName();
                             imgname = imgname.indexOf('.') != -1 ? imgname.substring(0, imgname.indexOf('.')) : imgname;
                             if (imgname.equalsIgnoreCase(plate.getUnicodeText()) && plate.getCountry().toLowerCase().startsWith(processRequest.getLocation().toLowerCase())) {
                                 found.set(true);
