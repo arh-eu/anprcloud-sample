@@ -30,46 +30,6 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
 
     private Type type = Type.ANPR;
 
-    private String workerName;
-
-    /**
-     * Get the value of workerName
-     *
-     * @return the value of workerName
-     */
-    public String getWorkerName() {
-        return workerName;
-    }
-
-    /**
-     * Set the value of workerName
-     *
-     * @param workerName new value of workerName
-     */
-    public void setWorkerName(String workerName) {
-        this.workerName = workerName;
-    }
-
-    private int callNum;
-
-    /**
-     * Get the value of callNum
-     *
-     * @return the value of callNum
-     */
-    public int getCallNum() {
-        return callNum;
-    }
-
-    /**
-     * Set the value of callNum
-     *
-     * @param callNum new value of callNum
-     */
-    public void setCallNum(int callNum) {
-        this.callNum = callNum;
-    }
-
     /**
      * Get the value of type
      *
@@ -187,12 +147,6 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getWorkerName() != null) {
-            sb.append("Worker: ").append(getWorkerName()).append(",");
-        }
-        if (getCallNum() != 0) {
-            sb.append("Call: ").append(getCallNum()).append(",");
-        }
         if (getType() != null) {
             sb.append("Type: ").append(getType()).append(",");
         }
