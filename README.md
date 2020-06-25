@@ -58,7 +58,7 @@ To set the service endpoint configuration, use the ANPRCloudConfig class. You ca
 ```java
 ANPRCloudConfig.getConfig()
     .endpoint(RuntimeHttpUtils.toUri("api-eu.anpr-cloud.com", Protocol.HTTPS))
-    .stage("/dev");
+    .stage("/free");
 ```
 
 ## Creating a client
