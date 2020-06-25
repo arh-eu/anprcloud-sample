@@ -97,7 +97,7 @@ public class ANPRCloudSample {
                             if (i != null) {
                                 i.incrementAndGet();
                             }
-                            LOGGER.log(Level.DEBUG, "{}. retry: {} ({}) - {}", context.totalRequests(), context.exception(),
+                            LOGGER.log(Level.DEBUG, "{}. retry: {}", context.totalRequests(), context.exception(),
                                     context.exception() instanceof ANPRCloudServiceException ? ((ANPRCloudServiceException) context.exception()).getError() : context.exception().getMessage(),
                                     context.originalRequest());
                             return (int) ((Math.random() + context.totalRequests()) * 100);
