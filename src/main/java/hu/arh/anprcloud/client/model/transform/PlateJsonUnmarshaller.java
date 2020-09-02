@@ -15,13 +15,13 @@ import com.fasterxml.jackson.core.JsonToken;
 import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
- * PlatesElement JSON Unmarshaller
+ * Plate JSON Unmarshaller
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
-public class PlatesElementJsonUnmarshaller implements Unmarshaller<PlatesElement, JsonUnmarshallerContext> {
+public class PlateJsonUnmarshaller implements Unmarshaller<Plate, JsonUnmarshallerContext> {
 
-    public PlatesElement unmarshall(JsonUnmarshallerContext context) throws Exception {
-        PlatesElement platesElement = new PlatesElement();
+    public Plate unmarshall(JsonUnmarshallerContext context) throws Exception {
+        Plate plate = new Plate();
 
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
@@ -41,43 +41,43 @@ public class PlatesElementJsonUnmarshaller implements Unmarshaller<PlatesElement
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("bgcolor", targetDepth)) {
                     context.nextToken();
-                    platesElement.setBgcolor(BgcolorJsonUnmarshaller.getInstance().unmarshall(context));
+                    plate.setBgcolor(BgcolorJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("color", targetDepth)) {
                     context.nextToken();
-                    platesElement.setColor(ColorJsonUnmarshaller.getInstance().unmarshall(context));
+                    plate.setColor(ColorJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("confidence", targetDepth)) {
                     context.nextToken();
-                    platesElement.setConfidence(context.getUnmarshaller(Integer.class).unmarshall(context));
-                }
-                if (context.testExpression("plateType", targetDepth)) {
-                    context.nextToken();
-                    platesElement.setPlateType(context.getUnmarshaller(Integer.class).unmarshall(context));
+                    plate.setConfidence(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("country", targetDepth)) {
                     context.nextToken();
-                    platesElement.setCountry(context.getUnmarshaller(String.class).unmarshall(context));
-                }
-                if (context.testExpression("state", targetDepth)) {
-                    context.nextToken();
-                    platesElement.setState(context.getUnmarshaller(String.class).unmarshall(context));
+                    plate.setCountry(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("plateChars", targetDepth)) {
                     context.nextToken();
-                    platesElement.setPlateChars(new ListUnmarshaller<PlateCharsElement>(PlateCharsElementJsonUnmarshaller.getInstance()).unmarshall(context));
+                    plate.setPlateChars(new ListUnmarshaller<PlateCharsElement>(PlateCharsElementJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("plateROI", targetDepth)) {
                     context.nextToken();
-                    platesElement.setPlateROI(PlateROIJsonUnmarshaller.getInstance().unmarshall(context));
+                    plate.setPlateROI(PlateROIJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("plateType", targetDepth)) {
+                    context.nextToken();
+                    plate.setPlateType(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("proctime", targetDepth)) {
                     context.nextToken();
-                    platesElement.setProctime(context.getUnmarshaller(Integer.class).unmarshall(context));
+                    plate.setProctime(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("state", targetDepth)) {
+                    context.nextToken();
+                    plate.setState(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("unicodeText", targetDepth)) {
                     context.nextToken();
-                    platesElement.setUnicodeText(context.getUnmarshaller(String.class).unmarshall(context));
+                    plate.setUnicodeText(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
@@ -88,14 +88,14 @@ public class PlatesElementJsonUnmarshaller implements Unmarshaller<PlatesElement
             token = context.nextToken();
         }
 
-        return platesElement;
+        return plate;
     }
 
-    private static PlatesElementJsonUnmarshaller instance;
+    private static PlateJsonUnmarshaller instance;
 
-    public static PlatesElementJsonUnmarshaller getInstance() {
+    public static PlateJsonUnmarshaller getInstance() {
         if (instance == null)
-            instance = new PlatesElementJsonUnmarshaller();
+            instance = new PlateJsonUnmarshaller();
         return instance;
     }
 }

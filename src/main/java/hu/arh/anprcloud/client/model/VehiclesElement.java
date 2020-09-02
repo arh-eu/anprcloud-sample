@@ -10,65 +10,65 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * 
- * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/api-eu-2020-09-01T16:20:25Z/BottomLeft" target="_top">AWS API
- *      Documentation</a>
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/api-eu-2020-09-01T16:20:25Z/__VehiclesElement" target="_top">AWS
+ *      API Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
-public class BottomLeft implements Serializable, Cloneable, StructuredPojo {
+public class VehiclesElement implements Serializable, Cloneable, StructuredPojo {
 
-    private Integer x;
+    private Mmr mmr;
 
-    private Integer y;
+    private Plate plate;
 
     /**
-     * @param x
+     * @param mmr
      */
 
-    public void setX(Integer x) {
-        this.x = x;
+    public void setMmr(Mmr mmr) {
+        this.mmr = mmr;
     }
 
     /**
      * @return
      */
 
-    public Integer getX() {
-        return this.x;
+    public Mmr getMmr() {
+        return this.mmr;
     }
 
     /**
-     * @param x
+     * @param mmr
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public BottomLeft x(Integer x) {
-        setX(x);
+    public VehiclesElement mmr(Mmr mmr) {
+        setMmr(mmr);
         return this;
     }
 
     /**
-     * @param y
+     * @param plate
      */
 
-    public void setY(Integer y) {
-        this.y = y;
+    public void setPlate(Plate plate) {
+        this.plate = plate;
     }
 
     /**
      * @return
      */
 
-    public Integer getY() {
-        return this.y;
+    public Plate getPlate() {
+        return this.plate;
     }
 
     /**
-     * @param y
+     * @param plate
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public BottomLeft y(Integer y) {
-        setY(y);
+    public VehiclesElement plate(Plate plate) {
+        setPlate(plate);
         return this;
     }
 
@@ -84,10 +84,10 @@ public class BottomLeft implements Serializable, Cloneable, StructuredPojo {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getX() != null)
-            sb.append("X: ").append(getX()).append(",");
-        if (getY() != null)
-            sb.append("Y: ").append(getY());
+        if (getMmr() != null)
+            sb.append("Mmr: ").append(getMmr()).append(",");
+        if (getPlate() != null)
+            sb.append("Plate: ").append(getPlate());
         sb.append("}");
         return sb.toString();
     }
@@ -99,16 +99,16 @@ public class BottomLeft implements Serializable, Cloneable, StructuredPojo {
         if (obj == null)
             return false;
 
-        if (obj instanceof BottomLeft == false)
+        if (obj instanceof VehiclesElement == false)
             return false;
-        BottomLeft other = (BottomLeft) obj;
-        if (other.getX() == null ^ this.getX() == null)
+        VehiclesElement other = (VehiclesElement) obj;
+        if (other.getMmr() == null ^ this.getMmr() == null)
             return false;
-        if (other.getX() != null && other.getX().equals(this.getX()) == false)
+        if (other.getMmr() != null && other.getMmr().equals(this.getMmr()) == false)
             return false;
-        if (other.getY() == null ^ this.getY() == null)
+        if (other.getPlate() == null ^ this.getPlate() == null)
             return false;
-        if (other.getY() != null && other.getY().equals(this.getY()) == false)
+        if (other.getPlate() != null && other.getPlate().equals(this.getPlate()) == false)
             return false;
         return true;
     }
@@ -118,15 +118,15 @@ public class BottomLeft implements Serializable, Cloneable, StructuredPojo {
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode + ((getX() == null) ? 0 : getX().hashCode());
-        hashCode = prime * hashCode + ((getY() == null) ? 0 : getY().hashCode());
+        hashCode = prime * hashCode + ((getMmr() == null) ? 0 : getMmr().hashCode());
+        hashCode = prime * hashCode + ((getPlate() == null) ? 0 : getPlate().hashCode());
         return hashCode;
     }
 
     @Override
-    public BottomLeft clone() {
+    public VehiclesElement clone() {
         try {
-            return (BottomLeft) super.clone();
+            return (VehiclesElement) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
@@ -135,6 +135,6 @@ public class BottomLeft implements Serializable, Cloneable, StructuredPojo {
     @com.amazonaws.annotation.SdkInternalApi
     @Override
     public void marshall(ProtocolMarshaller protocolMarshaller) {
-        hu.arh.anprcloud.client.model.transform.BottomLeftMarshaller.getInstance().marshall(this, protocolMarshaller);
+        hu.arh.anprcloud.client.model.transform.VehiclesElementMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

@@ -9,8 +9,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * If the service call is successful, the service will return an Answer json object.
  * 
- * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ol6anslmcc-2020-05-04T08:02:27Z/Answer" target="_top">AWS API
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/api-eu-2020-09-01T16:20:25Z/Answer" target="_top">AWS API
  *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -21,6 +22,8 @@ public class Answer implements Serializable, Cloneable, StructuredPojo {
     private String node;
 
     private Integer nodetime;
+
+    private String version;
 
     /**
      * @param data
@@ -101,6 +104,32 @@ public class Answer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * @param version
+     */
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getVersion() {
+        return this.version;
+    }
+
+    /**
+     * @param version
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Answer version(String version) {
+        setVersion(version);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -117,7 +146,9 @@ public class Answer implements Serializable, Cloneable, StructuredPojo {
         if (getNode() != null)
             sb.append("Node: ").append(getNode()).append(",");
         if (getNodetime() != null)
-            sb.append("Nodetime: ").append(getNodetime());
+            sb.append("Nodetime: ").append(getNodetime()).append(",");
+        if (getVersion() != null)
+            sb.append("Version: ").append(getVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -144,6 +175,10 @@ public class Answer implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getNodetime() != null && other.getNodetime().equals(this.getNodetime()) == false)
             return false;
+        if (other.getVersion() == null ^ this.getVersion() == null)
+            return false;
+        if (other.getVersion() != null && other.getVersion().equals(this.getVersion()) == false)
+            return false;
         return true;
     }
 
@@ -155,6 +190,7 @@ public class Answer implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getData() == null) ? 0 : getData().hashCode());
         hashCode = prime * hashCode + ((getNode() == null) ? 0 : getNode().hashCode());
         hashCode = prime * hashCode + ((getNodetime() == null) ? 0 : getNodetime().hashCode());
+        hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
         return hashCode;
     }
 

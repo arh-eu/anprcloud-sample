@@ -24,6 +24,8 @@ public class AnswerMarshaller {
             .marshallLocationName("node").build();
     private static final MarshallingInfo<Integer> NODETIME_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("nodetime").build();
+    private static final MarshallingInfo<String> VERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("version").build();
 
     private static final AnswerMarshaller instance = new AnswerMarshaller();
 
@@ -44,6 +46,7 @@ public class AnswerMarshaller {
             protocolMarshaller.marshall(answer.getData(), DATA_BINDING);
             protocolMarshaller.marshall(answer.getNode(), NODE_BINDING);
             protocolMarshaller.marshall(answer.getNodetime(), NODETIME_BINDING);
+            protocolMarshaller.marshall(answer.getVersion(), VERSION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

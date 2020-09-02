@@ -39,13 +39,9 @@ public class DataJsonUnmarshaller implements Unmarshaller<Data, JsonUnmarshaller
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
-                if (context.testExpression("mmr", targetDepth)) {
+                if (context.testExpression("vehicles", targetDepth)) {
                     context.nextToken();
-                    data.setMmr(MmrJsonUnmarshaller.getInstance().unmarshall(context));
-                }
-                if (context.testExpression("plates", targetDepth)) {
-                    context.nextToken();
-                    data.setPlates(new ListUnmarshaller<PlatesElement>(PlatesElementJsonUnmarshaller.getInstance()).unmarshall(context));
+                    data.setVehicles(new ListUnmarshaller<VehiclesElement>(VehiclesElementJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

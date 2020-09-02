@@ -10,8 +10,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * 
- * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ol6anslmcc-2020-05-04T08:02:27Z/BottomRight" target="_top">AWS
- *      API Documentation</a>
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/api-eu-2020-09-01T16:20:25Z/BottomRight" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BottomRight implements Serializable, Cloneable, StructuredPojo {

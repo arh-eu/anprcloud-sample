@@ -10,11 +10,11 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * 
- * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ol6anslmcc-2020-05-04T08:02:27Z/__PlatesElement"
- *      target="_top">AWS API Documentation</a>
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/api-eu-2020-09-01T16:20:25Z/Plate" target="_top">AWS API
+ *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
-public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
+public class Plate implements Serializable, Cloneable, StructuredPojo {
 
     private Bgcolor bgcolor;
 
@@ -24,69 +24,17 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
 
     private String country;
 
-    private String state;
-
-    private Integer plateType;
-
     private java.util.List<PlateCharsElement> plateChars;
 
     private PlateROI plateROI;
 
+    private Integer plateType;
+
     private Integer proctime;
 
+    private String state;
+
     private String unicodeText;
-
-    /**
-     * @return
-     */
-
-    public String getState() {
-        return state;
-    }
-
-    /**
-     * @param state
-     */
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    /**
-     * @param state
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public PlatesElement state(String state) {
-        setState(state);
-        return this;
-    }
-
-    /**
-     * @return
-     */
-
-    public Integer getPlateType() {
-        return plateType;
-    }
-
-    /**
-     * @param plateType
-     */
-
-    public void setPlateType(Integer plateType) {
-        this.plateType = plateType;
-    }
-
-    /**
-     * @param plateType
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public PlatesElement plateType(Integer plateType) {
-        setPlateType(plateType);
-        return this;
-    }
 
     /**
      * @param bgcolor
@@ -109,7 +57,7 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement bgcolor(Bgcolor bgcolor) {
+    public Plate bgcolor(Bgcolor bgcolor) {
         setBgcolor(bgcolor);
         return this;
     }
@@ -135,7 +83,7 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement color(Color color) {
+    public Plate color(Color color) {
         setColor(color);
         return this;
     }
@@ -161,7 +109,7 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement confidence(Integer confidence) {
+    public Plate confidence(Integer confidence) {
         setConfidence(confidence);
         return this;
     }
@@ -187,7 +135,7 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement country(String country) {
+    public Plate country(String country) {
         setCountry(country);
         return this;
     }
@@ -224,7 +172,7 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement plateChars(PlateCharsElement... plateChars) {
+    public Plate plateChars(PlateCharsElement... plateChars) {
         if (this.plateChars == null) {
             setPlateChars(new java.util.ArrayList<PlateCharsElement>(plateChars.length));
         }
@@ -239,7 +187,7 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement plateChars(java.util.Collection<PlateCharsElement> plateChars) {
+    public Plate plateChars(java.util.Collection<PlateCharsElement> plateChars) {
         setPlateChars(plateChars);
         return this;
     }
@@ -265,8 +213,34 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement plateROI(PlateROI plateROI) {
+    public Plate plateROI(PlateROI plateROI) {
         setPlateROI(plateROI);
+        return this;
+    }
+
+    /**
+     * @param plateType
+     */
+
+    public void setPlateType(Integer plateType) {
+        this.plateType = plateType;
+    }
+
+    /**
+     * @return
+     */
+
+    public Integer getPlateType() {
+        return this.plateType;
+    }
+
+    /**
+     * @param plateType
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Plate plateType(Integer plateType) {
+        setPlateType(plateType);
         return this;
     }
 
@@ -291,8 +265,34 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement proctime(Integer proctime) {
+    public Plate proctime(Integer proctime) {
         setProctime(proctime);
+        return this;
+    }
+
+    /**
+     * @param state
+     */
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getState() {
+        return this.state;
+    }
+
+    /**
+     * @param state
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Plate state(String state) {
+        setState(state);
         return this;
     }
 
@@ -317,7 +317,7 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public PlatesElement unicodeText(String unicodeText) {
+    public Plate unicodeText(String unicodeText) {
         setUnicodeText(unicodeText);
         return this;
     }
@@ -340,18 +340,18 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
             sb.append("Color: ").append(getColor()).append(",");
         if (getConfidence() != null)
             sb.append("Confidence: ").append(getConfidence()).append(",");
-        if (getPlateType() != null)
-            sb.append("PlateType: ").append(getPlateType()).append(",");
         if (getCountry() != null)
             sb.append("Country: ").append(getCountry()).append(",");
-        if (getState() != null)
-            sb.append("State: ").append(getState()).append(",");
         if (getPlateChars() != null)
             sb.append("PlateChars: ").append(getPlateChars()).append(",");
         if (getPlateROI() != null)
             sb.append("PlateROI: ").append(getPlateROI()).append(",");
+        if (getPlateType() != null)
+            sb.append("PlateType: ").append(getPlateType()).append(",");
         if (getProctime() != null)
             sb.append("Proctime: ").append(getProctime()).append(",");
+        if (getState() != null)
+            sb.append("State: ").append(getState()).append(",");
         if (getUnicodeText() != null)
             sb.append("UnicodeText: ").append(getUnicodeText());
         sb.append("}");
@@ -365,9 +365,9 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
         if (obj == null)
             return false;
 
-        if (obj instanceof PlatesElement == false)
+        if (obj instanceof Plate == false)
             return false;
-        PlatesElement other = (PlatesElement) obj;
+        Plate other = (Plate) obj;
         if (other.getBgcolor() == null ^ this.getBgcolor() == null)
             return false;
         if (other.getBgcolor() != null && other.getBgcolor().equals(this.getBgcolor()) == false)
@@ -380,17 +380,9 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getConfidence() != null && other.getConfidence().equals(this.getConfidence()) == false)
             return false;
-        if (other.getPlateType() == null ^ this.getPlateType() == null)
-            return false;
-        if (other.getPlateType() != null && other.getPlateType().equals(this.getPlateType()) == false)
-            return false;
         if (other.getCountry() == null ^ this.getCountry() == null)
             return false;
         if (other.getCountry() != null && other.getCountry().equals(this.getCountry()) == false)
-            return false;
-        if (other.getState() == null ^ this.getState() == null)
-            return false;
-        if (other.getState() != null && other.getState().equals(this.getState()) == false)
             return false;
         if (other.getPlateChars() == null ^ this.getPlateChars() == null)
             return false;
@@ -400,9 +392,17 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getPlateROI() != null && other.getPlateROI().equals(this.getPlateROI()) == false)
             return false;
+        if (other.getPlateType() == null ^ this.getPlateType() == null)
+            return false;
+        if (other.getPlateType() != null && other.getPlateType().equals(this.getPlateType()) == false)
+            return false;
         if (other.getProctime() == null ^ this.getProctime() == null)
             return false;
         if (other.getProctime() != null && other.getProctime().equals(this.getProctime()) == false)
+            return false;
+        if (other.getState() == null ^ this.getState() == null)
+            return false;
+        if (other.getState() != null && other.getState().equals(this.getState()) == false)
             return false;
         if (other.getUnicodeText() == null ^ this.getUnicodeText() == null)
             return false;
@@ -419,20 +419,20 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getBgcolor() == null) ? 0 : getBgcolor().hashCode());
         hashCode = prime * hashCode + ((getColor() == null) ? 0 : getColor().hashCode());
         hashCode = prime * hashCode + ((getConfidence() == null) ? 0 : getConfidence().hashCode());
-        hashCode = prime * hashCode + ((getPlateType() == null) ? 0 : getPlateType().hashCode());
         hashCode = prime * hashCode + ((getCountry() == null) ? 0 : getCountry().hashCode());
-        hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
         hashCode = prime * hashCode + ((getPlateChars() == null) ? 0 : getPlateChars().hashCode());
         hashCode = prime * hashCode + ((getPlateROI() == null) ? 0 : getPlateROI().hashCode());
+        hashCode = prime * hashCode + ((getPlateType() == null) ? 0 : getPlateType().hashCode());
         hashCode = prime * hashCode + ((getProctime() == null) ? 0 : getProctime().hashCode());
+        hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
         hashCode = prime * hashCode + ((getUnicodeText() == null) ? 0 : getUnicodeText().hashCode());
         return hashCode;
     }
 
     @Override
-    public PlatesElement clone() {
+    public Plate clone() {
         try {
-            return (PlatesElement) super.clone();
+            return (Plate) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException("Got a CloneNotSupportedException from Object.clone() " + "even though we're Cloneable!", e);
         }
@@ -441,6 +441,6 @@ public class PlatesElement implements Serializable, Cloneable, StructuredPojo {
     @com.amazonaws.annotation.SdkInternalApi
     @Override
     public void marshall(ProtocolMarshaller protocolMarshaller) {
-        hu.arh.anprcloud.client.model.transform.PlatesElementMarshaller.getInstance().marshall(this, protocolMarshaller);
+        hu.arh.anprcloud.client.model.transform.PlateMarshaller.getInstance().marshall(this, protocolMarshaller);
     }
 }

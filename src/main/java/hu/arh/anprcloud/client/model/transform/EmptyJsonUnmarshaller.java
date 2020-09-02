@@ -15,13 +15,13 @@ import com.fasterxml.jackson.core.JsonToken;
 import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
- * Answer JSON Unmarshaller
+ * Empty JSON Unmarshaller
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
-public class AnswerJsonUnmarshaller implements Unmarshaller<Answer, JsonUnmarshallerContext> {
+public class EmptyJsonUnmarshaller implements Unmarshaller<Empty, JsonUnmarshallerContext> {
 
-    public Answer unmarshall(JsonUnmarshallerContext context) throws Exception {
-        Answer answer = new Answer();
+    public Empty unmarshall(JsonUnmarshallerContext context) throws Exception {
+        Empty empty = new Empty();
 
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
@@ -39,22 +39,6 @@ public class AnswerJsonUnmarshaller implements Unmarshaller<Answer, JsonUnmarsha
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
-                if (context.testExpression("data", targetDepth)) {
-                    context.nextToken();
-                    answer.setData(DataJsonUnmarshaller.getInstance().unmarshall(context));
-                }
-                if (context.testExpression("node", targetDepth)) {
-                    context.nextToken();
-                    answer.setNode(context.getUnmarshaller(String.class).unmarshall(context));
-                }
-                if (context.testExpression("nodetime", targetDepth)) {
-                    context.nextToken();
-                    answer.setNodetime(context.getUnmarshaller(Integer.class).unmarshall(context));
-                }
-                if (context.testExpression("version", targetDepth)) {
-                    context.nextToken();
-                    answer.setVersion(context.getUnmarshaller(String.class).unmarshall(context));
-                }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth)
@@ -64,14 +48,14 @@ public class AnswerJsonUnmarshaller implements Unmarshaller<Answer, JsonUnmarsha
             token = context.nextToken();
         }
 
-        return answer;
+        return empty;
     }
 
-    private static AnswerJsonUnmarshaller instance;
+    private static EmptyJsonUnmarshaller instance;
 
-    public static AnswerJsonUnmarshaller getInstance() {
+    public static EmptyJsonUnmarshaller getInstance() {
         if (instance == null)
-            instance = new AnswerJsonUnmarshaller();
+            instance = new EmptyJsonUnmarshaller();
         return instance;
     }
 }

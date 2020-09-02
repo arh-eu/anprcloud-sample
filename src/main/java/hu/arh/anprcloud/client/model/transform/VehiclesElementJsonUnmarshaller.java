@@ -15,13 +15,13 @@ import com.fasterxml.jackson.core.JsonToken;
 import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
- * Answer JSON Unmarshaller
+ * VehiclesElement JSON Unmarshaller
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
-public class AnswerJsonUnmarshaller implements Unmarshaller<Answer, JsonUnmarshallerContext> {
+public class VehiclesElementJsonUnmarshaller implements Unmarshaller<VehiclesElement, JsonUnmarshallerContext> {
 
-    public Answer unmarshall(JsonUnmarshallerContext context) throws Exception {
-        Answer answer = new Answer();
+    public VehiclesElement unmarshall(JsonUnmarshallerContext context) throws Exception {
+        VehiclesElement vehiclesElement = new VehiclesElement();
 
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
@@ -39,21 +39,13 @@ public class AnswerJsonUnmarshaller implements Unmarshaller<Answer, JsonUnmarsha
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
-                if (context.testExpression("data", targetDepth)) {
+                if (context.testExpression("mmr", targetDepth)) {
                     context.nextToken();
-                    answer.setData(DataJsonUnmarshaller.getInstance().unmarshall(context));
+                    vehiclesElement.setMmr(MmrJsonUnmarshaller.getInstance().unmarshall(context));
                 }
-                if (context.testExpression("node", targetDepth)) {
+                if (context.testExpression("plate", targetDepth)) {
                     context.nextToken();
-                    answer.setNode(context.getUnmarshaller(String.class).unmarshall(context));
-                }
-                if (context.testExpression("nodetime", targetDepth)) {
-                    context.nextToken();
-                    answer.setNodetime(context.getUnmarshaller(Integer.class).unmarshall(context));
-                }
-                if (context.testExpression("version", targetDepth)) {
-                    context.nextToken();
-                    answer.setVersion(context.getUnmarshaller(String.class).unmarshall(context));
+                    vehiclesElement.setPlate(PlateJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
@@ -64,14 +56,14 @@ public class AnswerJsonUnmarshaller implements Unmarshaller<Answer, JsonUnmarsha
             token = context.nextToken();
         }
 
-        return answer;
+        return vehiclesElement;
     }
 
-    private static AnswerJsonUnmarshaller instance;
+    private static VehiclesElementJsonUnmarshaller instance;
 
-    public static AnswerJsonUnmarshaller getInstance() {
+    public static VehiclesElementJsonUnmarshaller getInstance() {
         if (instance == null)
-            instance = new AnswerJsonUnmarshaller();
+            instance = new VehiclesElementJsonUnmarshaller();
         return instance;
     }
 }
