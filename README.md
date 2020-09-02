@@ -13,7 +13,7 @@ Run the following command in a terminal/console.
 mvn package
 ```
 
-This compiles the client into a jar located at `./target/anprcloud-client-1.0-SNAPSHOT.jar`. Note that this jar does not include any dependencies.
+This compiles the client into a jar located at `./target/anprcloud-client-1.1-SNAPSHOT.jar`. Note that this jar does not include any dependencies.
 
 ### Distributing the client package
 It's recommended to publish your client to a repository ([Maven](https://maven.apache.org/) or [Ivy](http://ant.apache.org/ivy/) for example) and have your customers declare a dependency on the project in their build system.
@@ -21,7 +21,7 @@ It's recommended to publish your client to a repository ([Maven](https://maven.a
 To depend on this project in Gradle (after the package is published to an accessible repository), add the following to your build.gradle file.
 ```perl
 dependencies {
-    compile 'hu.arh:anprcloud-client:1.0-SNAPSHOT'
+    compile 'hu.arh:anprcloud-client:1.1-SNAPSHOT'
 }
 ```
 
@@ -31,7 +31,7 @@ To depend on this project in Apache Maven (after the package published to an acc
     <dependency>
         <groupId>hu.arh</groupId>
         <artifactId>anprcloud-client</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
@@ -48,7 +48,7 @@ If your customers aren't using Maven or Gradle and you would prefer to distribut
 mvn clean package -Pstandalone-jar
 ```
 
-This will compile the client and package all dependencies into a jar located at `./target/anprcloud-client-1.0-SNAPSHOT.jar`.
+This will compile the client and package all dependencies into a jar located at `./target/anprcloud-client-1.1-SNAPSHOT.jar`.
 
 # Developer Guide
 

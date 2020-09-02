@@ -115,17 +115,17 @@ public class ANPRCloudSample {
             ANPRCloudResult result = service.process(processRequest);
             LOGGER.log(Level.INFO, "Request ({}) result: {}", result.sdkResponseMetadata().requestId(), result.getAnswer());
             if (result.getAnswer() != null) {
-                if (result.getAnswer().getData() != null && result.getAnswer().getData().getPlates() != null && !result.getAnswer().getData().getPlates().isEmpty()) {
-                    if (result.getAnswer().getData().getPlates().size() == 1
-                            && result.getAnswer().getData().getPlates().get(0).getUnicodeText() == null
-                            && result.getAnswer().getData().getPlates().get(0).getCountry() == null) {
+                if (result.getAnswer().getData() != null && result.getAnswer().getData().getVehicles() != null && !result.getAnswer().getData().getVehicles().isEmpty()) {
+                    if (result.getAnswer().getData().getVehicles().size() == 1 && (result.getAnswer().getData().getVehicles().get(0).getPlate() == null
+                            || (result.getAnswer().getData().getVehicles().get(0).getPlate().getUnicodeText() == null
+                            && result.getAnswer().getData().getVehicles().get(0).getPlate().getCountry() == null))) {
                         LOGGER.log(Level.INFO, "Request ({}): result doesn't contain any plates!", result.sdkResponseMetadata().requestId());
                     } else {
                         AtomicBoolean found = new AtomicBoolean(false);
-                        result.getAnswer().getData().getPlates().forEach((plate) -> {
+                        result.getAnswer().getData().getVehicles().forEach((vehicle) -> {
                             String imgname = processRequest.getImageName();
                             imgname = imgname.indexOf('.') != -1 ? imgname.substring(0, imgname.indexOf('.')) : imgname;
-                            if (imgname.equalsIgnoreCase(plate.getUnicodeText())/* && plate.getCountry().toLowerCase().startsWith(processRequest.getLocation().toLowerCase())*/) {
+                            if (imgname.equalsIgnoreCase(vehicle.getPlate().getUnicodeText())/* && plate.getCountry().toLowerCase().startsWith(processRequest.getLocation().toLowerCase())*/) {
                                 found.set(true);
                             }
                         });
