@@ -5,7 +5,7 @@
     <artifactId>anprcloud-client</artifactId>
     <packaging>jar</packaging>
     <name>ANPR Cloud Service</name>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <description>Client package for ANPRCloudService</description>
 
     <properties>

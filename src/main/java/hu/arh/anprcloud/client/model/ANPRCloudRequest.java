@@ -20,6 +20,8 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
         ANPR, MMR
     }
 
+    private Integer maxreads;
+
     private String location;
 
     private String mimeType;
@@ -89,6 +91,30 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
     }
 
     /**
+     * @param maxreads
+     */
+    public void setMaxreads(Integer maxreads) {
+        this.maxreads = maxreads;
+    }
+
+    /**
+     * @return
+     */
+    public Integer getMaxreads() {
+        return this.maxreads;
+    }
+
+    /**
+     * @param maxreads
+     * @return Returns a reference to this object so that method calls can be
+     * chained together.
+     */
+    public ANPRCloudRequest maxreads(Integer maxreads) {
+        setMaxreads(maxreads);
+        return this;
+    }
+
+    /**
      * @param location
      */
     public void setLocation(String location) {
@@ -150,6 +176,9 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
         if (getType() != null) {
             sb.append("Type: ").append(getType()).append(",");
         }
+        if (getMaxreads() != null) {
+            sb.append("Maxreads: ").append(getMaxreads()).append(",");
+        }
         if (getLocation() != null) {
             sb.append("Location: ").append(getLocation()).append(",");
         }
@@ -180,6 +209,12 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
             return false;
         }
         if (other.getType() != null && other.getType().equals(this.getType()) == false) {
+            return false;
+        }
+        if (other.getMaxreads() == null ^ this.getMaxreads() == null) {
+            return false;
+        }
+        if (other.getMaxreads() != null && other.getMaxreads().equals(this.getMaxreads()) == false) {
             return false;
         }
         if (other.getLocation() == null ^ this.getLocation() == null) {
@@ -215,6 +250,7 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
+        hashCode = prime * hashCode + ((getMaxreads() == null) ? 0 : getMaxreads().hashCode());
         hashCode = prime * hashCode + ((getLocation() == null) ? 0 : getLocation().hashCode());
         hashCode = prime * hashCode + ((getImage() == null) ? 0 : getImage().hashCode());
         hashCode = prime * hashCode + ((getImageName() == null) ? 0 : getImageName().hashCode());

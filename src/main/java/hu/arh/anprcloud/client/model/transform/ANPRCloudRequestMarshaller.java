@@ -53,6 +53,9 @@ public class ANPRCloudRequestMarshaller {
             if (anprCloudRequest.getImage() != null && anprCloudRequest.getImageName() != null && anprCloudRequest.getMimeType() != null) {
                 builder.addBinaryBody("image", anprCloudRequest.getImage(), ContentType.getByMimeType(anprCloudRequest.getMimeType()), anprCloudRequest.getImageName());
             }
+            if (anprCloudRequest.getMaxreads() != null) {
+                builder.addTextBody("maxreads", String.valueOf(anprCloudRequest.getMaxreads()));
+            }
             if (anprCloudRequest.getLocation() != null) {
                 builder.addTextBody("location", anprCloudRequest.getLocation());
             }
