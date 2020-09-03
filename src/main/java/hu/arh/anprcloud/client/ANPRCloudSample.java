@@ -109,7 +109,8 @@ public class ANPRCloudSample {
             ANPRCloudRequest processRequest = new ANPRCloudRequest();
 
             processRequest.setType(ANPRCloudRequest.Type.ANPR);
-            //processRequest.setLocation("HUN");
+            processRequest.setLocation("YOUR_COUNTRY_GOES_HERE");
+            processRequest.setMaxreads(1); // Currently, this parameter is ignored, the system searches for only one license plate / make and model
             processRequest.setImage(new FileInputStream(img), img.getName(), Files.probeContentType(img.toPath()));
             LOGGER.log(Level.INFO, "Processing: {}", processRequest);
             ANPRCloudResult result = service.process(processRequest);
