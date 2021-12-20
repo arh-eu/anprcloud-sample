@@ -10,20 +10,20 @@
 <p>Run the following command in a terminal/console.</p>
 <pre><code class="language-bash">mvn package
 </code></pre>
-<p>This compiles the client into a jar located at <code>./target/anprcloud-client-1.1.1-SNAPSHOT.jar</code>. Note that this jar does not include any dependencies.</p>
+<p>This compiles the client into a jar located at <code>./target/anprcloud-client-2.0-SNAPSHOT.jar</code>. Note that this jar does not include any dependencies.</p>
 <h3>Distributing the client package</h3>
 <p>It's recommended to publish your client to a repository (<a href="https://maven.apache.org/">Maven</a> or <a href="http://ant.apache.org/ivy/">Ivy</a> for example) and have your customers declare a dependency on the project in their build system.</p>
 <p>To depend on this project in Gradle (after the package is published to an accessible repository), add the following to your build.gradle file.</p>
 <pre><code class="language-perl">dependencies {
-    compile 'hu.arh:anprcloud-client:1.1.1-SNAPSHOT'
+    compile 'com.ar:anprcloud-client:2.0-SNAPSHOT'
 }
 </code></pre>
 <p>To depend on this project in Apache Maven (after the package published to an accessible repository), add the following to your pom.xml file.</p>
 <pre><code class="language-xml">&lt;dependencies&gt;
     &lt;dependency&gt;
-        &lt;groupId&gt;hu.arh&lt;/groupId&gt;
+        &lt;groupId&gt;com.ar&lt;/groupId&gt;
         &lt;artifactId&gt;anprcloud-client&lt;/artifactId&gt;
-        &lt;version&gt;1.1.1-SNAPSHOT&lt;/version&gt;
+        &lt;version&gt;2.0-SNAPSHOT&lt;/version&gt;
     &lt;/dependency&gt;
 &lt;/dependencies&gt;
 </code></pre>
@@ -36,7 +36,7 @@
 <p>If your customers aren't using Maven or Gradle and you would prefer to distribute a single JAR with all dependencies, you can use the following command to build a fat jar.</p>
 <pre><code class="language-bash">mvn clean package -Pstandalone-jar
 </code></pre>
-<p>This will compile the client and package all dependencies into a jar located at <code>./target/anprcloud-client-1.1.1-SNAPSHOT.jar</code>.</p>
+<p>This will compile the client and package all dependencies into a jar located at <code>./target/anprcloud-client-2.0-SNAPSHOT.jar</code>.</p>
 <h1>Developer Guide</h1>
 <h2>Setting the configuration</h2>
 <p>To set the service endpoint configuration, use the ANPRCloudConfig class. You can obtain an instance of the ANPRCloudConfig via a static factory method.</p>
