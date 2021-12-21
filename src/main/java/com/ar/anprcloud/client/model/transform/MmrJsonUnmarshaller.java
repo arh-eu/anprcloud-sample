@@ -3,12 +3,9 @@
  */
 package com.ar.anprcloud.client.model.transform;
 
-import java.math.*;
-
 import javax.annotation.Generated;
 
 import com.ar.anprcloud.client.model.*;
-import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
 import com.fasterxml.jackson.core.JsonToken;
@@ -28,15 +25,17 @@ public class MmrJsonUnmarshaller implements Unmarshaller<Mmr, JsonUnmarshallerCo
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.getCurrentToken();
-        if (token == null)
+        if (token == null) {
             token = context.nextToken();
+        }
         if (token == VALUE_NULL) {
             return null;
         }
 
         while (true) {
-            if (token == null)
+            if (token == null) {
                 break;
+            }
 
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("category", targetDepth)) {
@@ -71,14 +70,11 @@ public class MmrJsonUnmarshaller implements Unmarshaller<Mmr, JsonUnmarshallerCo
                     context.nextToken();
                     mmr.setProctime(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
-                if (context.testExpression("subModel", targetDepth)) {
-                    context.nextToken();
-                    mmr.setSubModel(context.getUnmarshaller(String.class).unmarshall(context));
-                }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
-                    if (context.getCurrentDepth() <= originalDepth)
+                    if (context.getCurrentDepth() <= originalDepth) {
                         break;
+                    }
                 }
             }
             token = context.nextToken();
@@ -90,8 +86,9 @@ public class MmrJsonUnmarshaller implements Unmarshaller<Mmr, JsonUnmarshallerCo
     private static MmrJsonUnmarshaller instance;
 
     public static MmrJsonUnmarshaller getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new MmrJsonUnmarshaller();
+        }
         return instance;
     }
 }

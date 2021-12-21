@@ -25,6 +25,10 @@ public class PlateMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("color").build();
     private static final MarshallingInfo<Integer> CONFIDENCE_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("confidence").build();
+    private static final MarshallingInfo<Integer> PLATE_TYPE_CONFIDENCE_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("plateTypeConfidence").build();
+    private static final MarshallingInfo<Integer> POSITION_CONFIDENCE_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("positionConfidence").build();
     private static final MarshallingInfo<String> COUNTRY_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("country").build();
     private static final MarshallingInfo<List> PLATECHARS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
@@ -39,6 +43,8 @@ public class PlateMarshaller {
             .marshallLocationName("state").build();
     private static final MarshallingInfo<String> UNICODETEXT_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("unicodeText").build();
+    private static final MarshallingInfo<String> CATEGORY_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("category").build();
 
     private static final PlateMarshaller instance = new PlateMarshaller();
 
@@ -59,6 +65,8 @@ public class PlateMarshaller {
             protocolMarshaller.marshall(plate.getBgcolor(), BGCOLOR_BINDING);
             protocolMarshaller.marshall(plate.getColor(), COLOR_BINDING);
             protocolMarshaller.marshall(plate.getConfidence(), CONFIDENCE_BINDING);
+            protocolMarshaller.marshall(plate.getPlateTypeConfidence(), PLATE_TYPE_CONFIDENCE_BINDING);
+            protocolMarshaller.marshall(plate.getPositionConfidence(), POSITION_CONFIDENCE_BINDING);
             protocolMarshaller.marshall(plate.getCountry(), COUNTRY_BINDING);
             protocolMarshaller.marshall(plate.getPlateChars(), PLATECHARS_BINDING);
             protocolMarshaller.marshall(plate.getPlateROI(), PLATEROI_BINDING);
@@ -66,6 +74,7 @@ public class PlateMarshaller {
             protocolMarshaller.marshall(plate.getProctime(), PROCTIME_BINDING);
             protocolMarshaller.marshall(plate.getState(), STATE_BINDING);
             protocolMarshaller.marshall(plate.getUnicodeText(), UNICODETEXT_BINDING);
+            protocolMarshaller.marshall(plate.getCategory(), CATEGORY_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

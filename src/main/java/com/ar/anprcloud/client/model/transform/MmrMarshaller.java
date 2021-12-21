@@ -34,8 +34,6 @@ public class MmrMarshaller {
             .marshallLocationName("model").build();
     private static final MarshallingInfo<Integer> PROCTIME_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("proctime").build();
-    private static final MarshallingInfo<String> SUBMODEL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
-            .marshallLocationName("subModel").build();
 
     private static final MmrMarshaller instance = new MmrMarshaller();
 
@@ -61,7 +59,6 @@ public class MmrMarshaller {
             protocolMarshaller.marshall(mmr.getMakeAndModelConfidence(), MAKEANDMODELCONFIDENCE_BINDING);
             protocolMarshaller.marshall(mmr.getModel(), MODEL_BINDING);
             protocolMarshaller.marshall(mmr.getProctime(), PROCTIME_BINDING);
-            protocolMarshaller.marshall(mmr.getSubModel(), SUBMODEL_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

@@ -3,12 +3,9 @@
  */
 package com.ar.anprcloud.client.model.transform;
 
-import java.math.*;
-
 import javax.annotation.Generated;
 
 import com.ar.anprcloud.client.model.*;
-import com.amazonaws.transform.SimpleTypeJsonUnmarshallers.*;
 import com.amazonaws.transform.*;
 
 import com.fasterxml.jackson.core.JsonToken;
@@ -28,15 +25,17 @@ public class PlateJsonUnmarshaller implements Unmarshaller<Plate, JsonUnmarshall
         int targetDepth = originalDepth + 1;
 
         JsonToken token = context.getCurrentToken();
-        if (token == null)
+        if (token == null) {
             token = context.nextToken();
+        }
         if (token == VALUE_NULL) {
             return null;
         }
 
         while (true) {
-            if (token == null)
+            if (token == null) {
                 break;
+            }
 
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression("bgcolor", targetDepth)) {
@@ -50,6 +49,14 @@ public class PlateJsonUnmarshaller implements Unmarshaller<Plate, JsonUnmarshall
                 if (context.testExpression("confidence", targetDepth)) {
                     context.nextToken();
                     plate.setConfidence(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("plateTypeConfidence", targetDepth)) {
+                    context.nextToken();
+                    plate.setPlateTypeConfidence(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("positionConfidence", targetDepth)) {
+                    context.nextToken();
+                    plate.setPositionConfidence(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("country", targetDepth)) {
                     context.nextToken();
@@ -79,10 +86,15 @@ public class PlateJsonUnmarshaller implements Unmarshaller<Plate, JsonUnmarshall
                     context.nextToken();
                     plate.setUnicodeText(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("category", targetDepth)) {
+                    context.nextToken();
+                    plate.setCategory(context.getUnmarshaller(String.class).unmarshall(context));
+                }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {
-                    if (context.getCurrentDepth() <= originalDepth)
+                    if (context.getCurrentDepth() <= originalDepth) {
                         break;
+                    }
                 }
             }
             token = context.nextToken();
@@ -94,8 +106,9 @@ public class PlateJsonUnmarshaller implements Unmarshaller<Plate, JsonUnmarshall
     private static PlateJsonUnmarshaller instance;
 
     public static PlateJsonUnmarshaller getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new PlateJsonUnmarshaller();
+        }
         return instance;
     }
 }

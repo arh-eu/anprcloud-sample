@@ -22,6 +22,10 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
 
     private Integer confidence;
 
+    private Integer plateTypeConfidence;
+
+    private Integer positionConfidence;
+
     private String country;
 
     private java.util.List<PlateCharsElement> plateChars;
@@ -35,6 +39,8 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
     private String state;
 
     private String unicodeText;
+
+    private String category;
 
     /**
      * @param bgcolor
@@ -111,6 +117,58 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
 
     public Plate confidence(Integer confidence) {
         setConfidence(confidence);
+        return this;
+    }
+
+    /**
+     * @param plateTypeConfidence
+     */
+
+    public void setPlateTypeConfidence(Integer plateTypeConfidence) {
+        this.plateTypeConfidence = plateTypeConfidence;
+    }
+
+    /**
+     * @return
+     */
+
+    public Integer getPlateTypeConfidence() {
+        return this.plateTypeConfidence;
+    }
+
+    /**
+     * @param plateTypeConfidence
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Plate plateTypeConfidence(Integer plateTypeConfidence) {
+        setPlateTypeConfidence(plateTypeConfidence);
+        return this;
+    }
+
+    /**
+     * @param positionConfidence
+     */
+
+    public void setPositionConfidence(Integer positionConfidence) {
+        this.positionConfidence = positionConfidence;
+    }
+
+    /**
+     * @return
+     */
+
+    public Integer getPositionConfidence() {
+        return this.positionConfidence;
+    }
+
+    /**
+     * @param positionConfidence
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Plate PositionConfidence(Integer positionConfidence) {
+        setPositionConfidence(positionConfidence);
         return this;
     }
 
@@ -323,6 +381,32 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * @param category
+     */
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getCategory() {
+        return this.category;
+    }
+
+    /**
+     * @param category
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Plate Category(String category) {
+        setUnicodeText(category);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -340,6 +424,10 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
             sb.append("Color: ").append(getColor()).append(",");
         if (getConfidence() != null)
             sb.append("Confidence: ").append(getConfidence()).append(",");
+        if (getPlateTypeConfidence() != null)
+            sb.append("PlateTypeConfidence: ").append(getPlateTypeConfidence()).append(",");
+        if (getPositionConfidence() != null)
+            sb.append("PositionConfidence: ").append(getPositionConfidence()).append(",");
         if (getCountry() != null)
             sb.append("Country: ").append(getCountry()).append(",");
         if (getPlateChars() != null)
@@ -354,6 +442,8 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
             sb.append("State: ").append(getState()).append(",");
         if (getUnicodeText() != null)
             sb.append("UnicodeText: ").append(getUnicodeText());
+        if (getCategory() != null)
+            sb.append("Category: ").append(getCategory());
         sb.append("}");
         return sb.toString();
     }
@@ -379,6 +469,14 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
         if (other.getConfidence() == null ^ this.getConfidence() == null)
             return false;
         if (other.getConfidence() != null && other.getConfidence().equals(this.getConfidence()) == false)
+            return false;
+        if (other.getPlateTypeConfidence() == null ^ this.getPlateTypeConfidence() == null)
+            return false;
+        if (other.getPlateTypeConfidence() != null && other.getPlateTypeConfidence().equals(this.getPlateTypeConfidence()) == false)
+            return false;
+        if (other.getPositionConfidence() == null ^ this.getPositionConfidence() == null)
+            return false;
+        if (other.getPositionConfidence() != null && other.getPositionConfidence().equals(this.getPositionConfidence()) == false)
             return false;
         if (other.getCountry() == null ^ this.getCountry() == null)
             return false;
@@ -408,6 +506,10 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getUnicodeText() != null && other.getUnicodeText().equals(this.getUnicodeText()) == false)
             return false;
+        if (other.getCategory() == null ^ this.getCategory() == null)
+            return false;
+        if (other.getCategory() != null && other.getCategory().equals(this.getCategory()) == false)
+            return false;
         return true;
     }
 
@@ -419,6 +521,8 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getBgcolor() == null) ? 0 : getBgcolor().hashCode());
         hashCode = prime * hashCode + ((getColor() == null) ? 0 : getColor().hashCode());
         hashCode = prime * hashCode + ((getConfidence() == null) ? 0 : getConfidence().hashCode());
+        hashCode = prime * hashCode + ((getPlateTypeConfidence() == null) ? 0 : getPlateTypeConfidence().hashCode());
+        hashCode = prime * hashCode + ((getPositionConfidence() == null) ? 0 : getPositionConfidence().hashCode());
         hashCode = prime * hashCode + ((getCountry() == null) ? 0 : getCountry().hashCode());
         hashCode = prime * hashCode + ((getPlateChars() == null) ? 0 : getPlateChars().hashCode());
         hashCode = prime * hashCode + ((getPlateROI() == null) ? 0 : getPlateROI().hashCode());
@@ -426,6 +530,7 @@ public class Plate implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getProctime() == null) ? 0 : getProctime().hashCode());
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
         hashCode = prime * hashCode + ((getUnicodeText() == null) ? 0 : getUnicodeText().hashCode());
+        hashCode = prime * hashCode + ((getCategory() == null) ? 0 : getCategory().hashCode());
         return hashCode;
     }
 
