@@ -79,13 +79,13 @@ client.shutdown();
 <p>After a client is configured and created, you can make a request to the service. A method on the client interface (<code>ANPRCloudService</code>) is created for all actions (resource + method) in your API.</p>
 <p>For each API method, classes are generated that represent the request and response of that API. The request class has setters for any path parameters, query parameters, headers, and payload model that are defined in the API. The response class exposes getters for any modeled headers and for the modeled payload.</p>
 <pre><code class="language-java">ANPRCloudService client = ANPRCloudService.builder().build();
-ANPRCloudResult result = client.process(new ANPRCloudRequest().image(new File(&quot;image file path&quot;)).maxreads(maximum_number_of_searches).location(&quot;location code&quot;).type(ANPRCloudRequest.Type.ANPR));
+ANPRCloudResult result = client.process(new ANPRCloudRequest().image(new FileInputStream(&quot;image file path&quot;), &quot;image file name&quot;, &quot;image file type&quot;).maxreads(maximum_number_of_searches).location(&quot;location code&quot;).type(ANPRCloudRequest.Type.ANPR));
 </code></pre>
 <h3>Request Configuration</h3>
 <p>In addition to client-level configuration configured by the builder, each request class exposes configuration methods that are scoped to that request alone. Request level configuration takes precedence over client level configuration.</p>
 <p>The request config also allows adding headers and query parameters that aren't modeled by the API.</p>
 <pre><code class="language-java">ANPRCloudService client = ANPRCloudService.builder().build();
-client.process(new ANPRCloudRequest().image(new File(&quot;image file path&quot;)).maxreads(maximum_number_of_searches).location(&quot;location code&quot;).type(ANPRCloudRequest.Type.ANPR).sdkRequestConfig(
+client.process(new ANPRCloudRequest().image(new FileInputStream(&quot;image file path&quot;), &quot;image file name&quot;, &quot;image file type&quot;).maxreads(maximum_number_of_searches).location(&quot;location code&quot;).type(ANPRCloudRequest.Type.ANPR).sdkRequestConfig(
     SdkRequestConfig.builder()
 	.httpRequestTimeout(1500)
 	.totalExecutionTimeout(5000)
@@ -96,7 +96,7 @@ client.process(new ANPRCloudRequest().image(new File(&quot;image file path&quot;
 </code></pre>
 <h3>Response Metadata</h3>
 <p>In addition to the modeled data present in result objects, the SDK exposes access to additional HTTP metadata. This metadata is useful for debugging issues or accessing unmodeled data from the HTTP response.</p>
-<pre><code class="language-java">ANPRCloudResult result = client.process(new ANPRCloudRequest().image(new File(&quot;image file path&quot;)).maxreads(maximum_number_of_searches).location(&quot;location code&quot;).type(ANPRCloudRequest.Type.ANPR));
+<pre><code class="language-java">ANPRCloudResult result = client.process(new ANPRCloudRequest().image(new FileInputStream(&quot;image file path&quot;), &quot;image file name&quot;, &quot;image file type&quot;).maxreads(maximum_number_of_searches).location(&quot;location code&quot;).type(ANPRCloudRequest.Type.ANPR));
 System.out.println(result.sdkResponseMetadata().requestId());
 System.out.println(result.sdkResponseMetadata().httpStatusCode());
 // Full access to all HTTP headers (including modeled ones)

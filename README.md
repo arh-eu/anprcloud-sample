@@ -110,7 +110,10 @@ After a client is configured and created, you can make a request to the service.
 For each API method, classes are generated that represent the request and response of that API. The request class has setters for any path parameters, query parameters, headers, and payload model that are defined in the API. The response class exposes getters for any modeled headers and for the modeled payload.
 ```java
 ANPRCloudService client = ANPRCloudService.builder().build();
-ANPRCloudResult result = client.process(new ANPRCloudRequest().image(new File("image file path")).maxreads(maximum_number_of_searches).location("location code").type(ANPRCloudRequest.Type.ANPR));
+ANPRCloudResult result = client.process(new ANPRCloudRequest().image(new FileInputStream("image file path"), "image file name", "image file type")
+.maxreads(maximum_number_of_searches)
+.location("location code")
+.type(ANPRCloudRequest.Type.ANPR));
 ```
 
 ### Request Configuration
@@ -120,7 +123,10 @@ The request config also allows adding headers and query parameters that aren't m
 
 ```java
 ANPRCloudService client = ANPRCloudService.builder().build();
-client.process(new ANPRCloudRequest().image(new File("image file path")).maxreads(maximum_number_of_searches).location("location code").type(ANPRCloudRequest.Type.ANPR).sdkRequestConfig(
+client.process(new ANPRCloudRequest().image(new FileInputStream("image file path"), "image file name", "image file type")
+.maxreads(maximum_number_of_searches)
+.location("location code")
+.type(ANPRCloudRequest.Type.ANPR).sdkRequestConfig(
     SdkRequestConfig.builder()
 	.httpRequestTimeout(1500)
 	.totalExecutionTimeout(5000)
