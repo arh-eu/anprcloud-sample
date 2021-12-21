@@ -1,7 +1,7 @@
 /*
  *
  */
-package hu.arh.anprcloud.client;
+package com.ar.anprcloud.client;
 
 import com.amazonaws.Protocol;
 import com.amazonaws.SdkClientException;
@@ -10,12 +10,12 @@ import com.amazonaws.opensdk.config.TimeoutConfiguration;
 import com.amazonaws.opensdk.retry.RetryPolicyBuilder;
 import com.amazonaws.retry.v2.RetryPolicyContext;
 import com.amazonaws.util.RuntimeHttpUtils;
-import hu.arh.anprcloud.client.model.ANPRCloudRequest;
-import hu.arh.anprcloud.client.model.ANPRCloudResult;
-import hu.arh.anprcloud.client.model.ANPRCloudServiceException;
-import hu.arh.anprcloud.client.model.InternalServerErrorException;
-import hu.arh.anprcloud.client.model.RequestTimeoutException;
-import hu.arh.anprcloud.client.model.ServiceUnavailableException;
+import com.ar.anprcloud.client.model.ANPRCloudRequest;
+import com.ar.anprcloud.client.model.ANPRCloudResult;
+import com.ar.anprcloud.client.model.ANPRCloudServiceException;
+import com.ar.anprcloud.client.model.InternalServerErrorException;
+import com.ar.anprcloud.client.model.RequestTimeoutException;
+import com.ar.anprcloud.client.model.ServiceUnavailableException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -38,6 +38,7 @@ public class ANPRCloudSample {
     private static final int RETRY_COUNT = 10;
 
     static {
+        System.setProperty("log4j2.formatMsgNoLookups", "true");
         try {
             File currentDir = new File(ANPRCloudSample.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile();
             System.setProperty("log4j.configurationFile", currentDir.getAbsolutePath().concat(File.separator).concat("log4j.properties"));
@@ -49,15 +50,21 @@ public class ANPRCloudSample {
     private static final Logger LOGGER = LogManager.getLogger(ANPRCloudSample.class);
 
     public static void main(String[] args) throws Exception {
+        String apiUrl = null;
+        String stage = null;
+        String region = null;
         String ak = null;
         File img = null;
-        if (args.length >= 2) {
-            ak = args[0];
-            img = new File(args[1]);
+        if (args.length >= 5) {
+            apiUrl = args[0];
+            stage = args[1];
+            region = args[2];
+            ak = args[3];
+            img = new File(args[4]);
             img = img.exists() && img.isFile() ? img : null;
         }
         if (ak == null || img == null) {
-            LOGGER.error("Usage: ANPRCloudSample <api key> <image path>");
+            LOGGER.error("Usage: ANPRCloudSample <api url> <stage> <region> <api key> <image path>");
             return;
         }
 
@@ -72,13 +79,14 @@ public class ANPRCloudSample {
         final String apiKey = ak;
 
         ANPRCloudConfig.getConfig()
-                .endpoint(RuntimeHttpUtils.toUri("api-eu.anpr-cloud.com", Protocol.HTTPS))
-                .stage("/free")
+                .endpoint(RuntimeHttpUtils.toUri(apiUrl, Protocol.HTTPS))
+                .stage(stage)
+                .region(region)
                 .withThrottledRetries(false);
 
         ANPRCloudService service = ANPRCloudService.builder()
                 .connectionConfiguration(new ConnectionConfiguration()
-                        .maxConnections(1000)
+                        .maxConnections(1)
                         .connectionMaxIdleMillis(1000))
                 .timeoutConfiguration(new TimeoutConfiguration()
                         .httpRequestTimeout(5000)
@@ -91,6 +99,7 @@ public class ANPRCloudSample {
                                 RequestTimeoutException.class,
                                 InternalServerErrorException.class)
                         .retryOnStatusCodes(429)
+                        .retryOnStatusCodes(504)
                         .maxNumberOfRetries(RETRY_COUNT)
                         .backoffStrategy((RetryPolicyContext context) -> {
                             AtomicInteger i = retries.get(context.totalRequests());
@@ -106,12 +115,11 @@ public class ANPRCloudSample {
                 .apiKey(apiKey).build();
 
         try {
-            ANPRCloudRequest processRequest = new ANPRCloudRequest();
-
-            processRequest.setType(ANPRCloudRequest.Type.ANPR);
-            processRequest.setLocation("YOUR_COUNTRY_GOES_HERE");
-            processRequest.setMaxreads(1); // Currently, this parameter is ignored, the system searches for only one license plate / make and model
-            processRequest.setImage(new FileInputStream(img), img.getName(), Files.probeContentType(img.toPath()));
+            ANPRCloudRequest processRequest = new ANPRCloudRequest()
+                    .type(ANPRCloudRequest.Type.MMR)
+                    .location("YOUR_COUNTRY_GOES_HERE")
+                    .maxreads(1)
+                    .image(new FileInputStream(img), img.getName(), Files.probeContentType(img.toPath()));
             LOGGER.log(Level.INFO, "Processing: {}", processRequest);
             ANPRCloudResult result = service.process(processRequest);
             LOGGER.log(Level.INFO, "Request ({}) result: {}", result.sdkResponseMetadata().requestId(), result.getAnswer());
