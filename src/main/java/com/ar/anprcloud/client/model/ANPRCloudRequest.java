@@ -3,6 +3,8 @@
  */
 package com.ar.anprcloud.client.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import javax.annotation.Generated;
@@ -27,6 +29,8 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
     private String mimeType;
 
     private String imageName;
+
+    private long imageSize;
 
     private InputStream image;
 
@@ -60,6 +64,15 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
     }
 
     /**
+     * Get the value of imageSize
+     *
+     * @return the value of imageSize
+     */
+    public long getImageSize() {
+        return imageSize;
+    }
+
+    /**
      * Get the value of mimeType
      *
      * @return the value of mimeType
@@ -83,9 +96,12 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
      * @param image new value of image
      * @param imageName new value of imageName
      * @param mimeType new value of mimeType
+     * @throws java.io.IOException
      */
-    public void setImage(InputStream image, String imageName, String mimeType) {
-        this.image = image;
+    public void setImage(InputStream image, String imageName, String mimeType) throws IOException {
+        byte[] imageContent = image.readAllBytes();
+        this.imageSize = imageContent.length;
+        this.image = new ByteArrayInputStream(imageContent);
         this.imageName = imageName;
         this.mimeType = mimeType;
     }
@@ -154,8 +170,9 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
      * @param mimeType
      * @return Returns a reference to this object so that method calls can be
      * chained together.
+     * @throws java.io.IOException
      */
-    public ANPRCloudRequest image(InputStream image, String imageName, String mimeType) {
+    public ANPRCloudRequest image(InputStream image, String imageName, String mimeType) throws IOException {
         setImage(image, imageName, mimeType);
         return this;
     }
@@ -183,7 +200,7 @@ public class ANPRCloudRequest extends com.amazonaws.opensdk.BaseRequest implemen
             sb.append("Location: ").append(getLocation()).append(",");
         }
         if (getImage() != null) {
-            sb.append("ImageName: ").append(getImageName()).append(",");
+            sb.append("Image: ").append(getImageName()).append(" (").append(getImageSize()).append(" bytes),");
         }
         if (getMimeType() != null) {
             sb.append("MimeType: ").append(getMimeType());

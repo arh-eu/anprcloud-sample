@@ -16,6 +16,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Base64;
+import java.util.UUID;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 
@@ -50,6 +52,7 @@ public class ANPRCloudRequestMarshaller {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+            builder.setBoundary(UUID.randomUUID().toString());
             if (anprCloudRequest.getImage() != null && anprCloudRequest.getImageName() != null && anprCloudRequest.getMimeType() != null) {
                 builder.addBinaryBody("image", anprCloudRequest.getImage(), ContentType.getByMimeType(anprCloudRequest.getMimeType()), anprCloudRequest.getImageName());
             }
@@ -61,7 +64,7 @@ public class ANPRCloudRequestMarshaller {
             }
             builder.addTextBody("service", anprCloudRequest.getType() == ANPRCloudRequest.Type.MMR ? "mmr" : "anpr");
             builder.build().writeTo(baos);
-            InputStream content = new ByteArrayInputStream(baos.toByteArray());
+            InputStream content = new ByteArrayInputStream(Base64.getEncoder().encode(baos.toByteArray()));
             protocolMarshaller.marshall(content, CONTENT_BINDING);
         } catch (IOException | SdkClientException e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

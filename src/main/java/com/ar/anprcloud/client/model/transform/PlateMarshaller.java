@@ -1,5 +1,5 @@
 /**
- * null
+ *
  */
 package com.ar.anprcloud.client.model.transform;
 
@@ -54,6 +54,9 @@ public class PlateMarshaller {
 
     /**
      * Marshall the given parameter object.
+     *
+     * @param plate
+     * @param protocolMarshaller
      */
     public void marshall(Plate plate, ProtocolMarshaller protocolMarshaller) {
 
@@ -75,7 +78,7 @@ public class PlateMarshaller {
             protocolMarshaller.marshall(plate.getState(), STATE_BINDING);
             protocolMarshaller.marshall(plate.getUnicodeText(), UNICODETEXT_BINDING);
             protocolMarshaller.marshall(plate.getCategory(), CATEGORY_BINDING);
-        } catch (Exception e) {
+        } catch (SdkClientException e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
     }

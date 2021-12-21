@@ -1,5 +1,5 @@
 /**
- * null
+ *
  */
 package com.ar.anprcloud.client.model.transform;
 
@@ -43,6 +43,9 @@ public class MmrMarshaller {
 
     /**
      * Marshall the given parameter object.
+     *
+     * @param mmr
+     * @param protocolMarshaller
      */
     public void marshall(Mmr mmr, ProtocolMarshaller protocolMarshaller) {
 
@@ -59,7 +62,7 @@ public class MmrMarshaller {
             protocolMarshaller.marshall(mmr.getMakeAndModelConfidence(), MAKEANDMODELCONFIDENCE_BINDING);
             protocolMarshaller.marshall(mmr.getModel(), MODEL_BINDING);
             protocolMarshaller.marshall(mmr.getProctime(), PROCTIME_BINDING);
-        } catch (Exception e) {
+        } catch (SdkClientException e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }
     }

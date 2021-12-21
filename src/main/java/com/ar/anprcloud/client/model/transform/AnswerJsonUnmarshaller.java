@@ -1,9 +1,8 @@
 /**
- * null
+ * 
  */
 package com.ar.anprcloud.client.model.transform;
 
-import java.math.*;
 
 import javax.annotation.Generated;
 
@@ -20,6 +19,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AnswerJsonUnmarshaller implements Unmarshaller<Answer, JsonUnmarshallerContext> {
 
+    @Override
     public Answer unmarshall(JsonUnmarshallerContext context) throws Exception {
         Answer answer = new Answer();
 
@@ -47,9 +47,9 @@ public class AnswerJsonUnmarshaller implements Unmarshaller<Answer, JsonUnmarsha
                     context.nextToken();
                     answer.setEngines(EnginesJsonUnmarshaller.getInstance().unmarshall(context));
                 }
-                if (context.testExpression("node", targetDepth)) {
+                if (context.testExpression("nodename", targetDepth)) {
                     context.nextToken();
-                    answer.setNode(context.getUnmarshaller(String.class).unmarshall(context));
+                    answer.setNodename(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("nodetime", targetDepth)) {
                     context.nextToken();

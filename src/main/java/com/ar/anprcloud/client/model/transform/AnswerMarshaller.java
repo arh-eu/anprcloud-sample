@@ -22,8 +22,8 @@ public class AnswerMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("data").build();
     private static final MarshallingInfo<StructuredPojo> ENGINES_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("engines").build();
-    private static final MarshallingInfo<String> NODE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
-            .marshallLocationName("node").build();
+    private static final MarshallingInfo<String> NODENAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("nodename").build();
     private static final MarshallingInfo<Integer> NODETIME_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("nodetime").build();
     private static final MarshallingInfo<String> VERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -47,7 +47,7 @@ public class AnswerMarshaller {
         try {
             protocolMarshaller.marshall(answer.getData(), DATA_BINDING);
             protocolMarshaller.marshall(answer.getEngines(), ENGINES_BINDING);
-            protocolMarshaller.marshall(answer.getNode(), NODE_BINDING);
+            protocolMarshaller.marshall(answer.getNodename(), NODENAME_BINDING);
             protocolMarshaller.marshall(answer.getNodetime(), NODETIME_BINDING);
             protocolMarshaller.marshall(answer.getVersion(), VERSION_BINDING);
         } catch (Exception e) {

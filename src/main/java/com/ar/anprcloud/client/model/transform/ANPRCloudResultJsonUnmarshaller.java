@@ -21,9 +21,9 @@ public class ANPRCloudResultJsonUnmarshaller implements Unmarshaller<ANPRCloudRe
     public ANPRCloudResult unmarshall(JsonUnmarshallerContext context) throws Exception {
         ANPRCloudResult anprCloudResult = new ANPRCloudResult();
 
-        int originalDepth = context.getCurrentDepth();
-        String currentParentElement = context.getCurrentParentElement();
-        int targetDepth = originalDepth + 1;
+        //int originalDepth = context.getCurrentDepth();
+        //String currentParentElement = context.getCurrentParentElement();
+        //int targetDepth = originalDepth + 1;
 
         JsonToken token = context.getCurrentToken();
         if (token == null) {

@@ -26,7 +26,8 @@ import com.ar.anprcloud.client.model.ANPRCloudRequest;
 @SdkInternalApi
 public class ANPRCloudRequestProtocolMarshaller implements Marshaller<Request<ANPRCloudRequest>, ANPRCloudRequest> {
 
-    private static final OperationInfo ANPR_OPERATION_BINDING = OperationInfo.builder().protocol(Protocol.API_GATEWAY).requestUri(ANPRCloudConfig.getConfig().getStage() + "/")
+    private static final OperationInfo ANPR_OPERATION_BINDING = OperationInfo.builder().protocol(Protocol.API_GATEWAY)
+            .requestUri("/" + ANPRCloudConfig.getConfig().getStage() + (ANPRCloudConfig.getConfig().getRegion() != null ? "/" + ANPRCloudConfig.getConfig().getRegion() : ""))
             .httpMethodName(HttpMethodName.POST).hasExplicitPayloadMember(true).hasPayloadMembers(true).serviceName("ANPRCloudService").build();
 
     private final ApiGatewayProtocolFactoryImpl protocolFactory;

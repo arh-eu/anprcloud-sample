@@ -1,5 +1,5 @@
 /**
- * null
+ * 
  */
 package com.ar.anprcloud.client.model.transform;
 
@@ -17,6 +17,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PlateJsonUnmarshaller implements Unmarshaller<Plate, JsonUnmarshallerContext> {
 
+    @Override
     public Plate unmarshall(JsonUnmarshallerContext context) throws Exception {
         Plate plate = new Plate();
 
@@ -64,7 +65,7 @@ public class PlateJsonUnmarshaller implements Unmarshaller<Plate, JsonUnmarshall
                 }
                 if (context.testExpression("plateChars", targetDepth)) {
                     context.nextToken();
-                    plate.setPlateChars(new ListUnmarshaller<PlateCharsElement>(PlateCharsElementJsonUnmarshaller.getInstance()).unmarshall(context));
+                    plate.setPlateChars(new ListUnmarshaller<>(PlateCharsElementJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("plateROI", targetDepth)) {
                     context.nextToken();

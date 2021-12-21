@@ -22,6 +22,7 @@ public class ANPRCloudConfig {
 
     private URI endpoint = RuntimeHttpUtils.toUri("api-eu.anpr-cloud.com", Protocol.HTTPS);
     private String stage = "";
+    private String region = "";
     private boolean withThrottledRetries = true;
 
     private ANPRCloudConfig() {
@@ -71,6 +72,22 @@ public class ANPRCloudConfig {
      *
      * @return
      */
+    public String getRegion() {
+        return region;
+    }
+
+    /**
+     *
+     * @param region
+     */
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    /**
+     *
+     * @return
+     */
     public boolean isWithThrottledRetries() {
         return withThrottledRetries;
     }
@@ -100,6 +117,16 @@ public class ANPRCloudConfig {
      */
     public ANPRCloudConfig stage(String stage) {
         this.stage = stage;
+        return this;
+    }
+
+    /**
+     *
+     * @param region
+     * @return
+     */
+    public ANPRCloudConfig region(String region) {
+        this.region = region;
         return this;
     }
 

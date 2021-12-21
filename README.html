@@ -42,7 +42,8 @@
 <p>To set the service endpoint configuration, use the ANPRCloudConfig class. You can obtain an instance of the ANPRCloudConfig via a static factory method.</p>
 <pre><code class="language-java">ANPRCloudConfig.getConfig()
     .endpoint(RuntimeHttpUtils.toUri("api-eu.anpr-cloud.com", Protocol.HTTPS))
-    .stage("/free");
+    .stage("free")
+    .region("eur");
 </code></pre>
 <h2>Creating a client</h2>
 <p>To create a client, use the client builder. You can obtain an instance of the builder via a static factory method located on the client interface.</p>

@@ -40,6 +40,7 @@ import java.util.stream.Stream;
 public final class ApiGatewayProtocolFactoryImpl implements SdkJsonMarshallerFactory {
 
     private static final SdkStructuredJsonFactory JSON_FACTORY = SdkStructuredPlainJsonFactory.SDK_JSON_FACTORY;
+    //private static final String CONTENT_TYPE = "multipart/form-data";
     private static final String CONTENT_TYPE = "application/json";
 
     private final JsonClientMetadata metadata;
@@ -61,7 +62,7 @@ public final class ApiGatewayProtocolFactoryImpl implements SdkJsonMarshallerFac
     public <T> ProtocolRequestMarshaller<T> createProtocolMarshaller(OperationInfo operationInfo, T origRequest) {
         return JsonProtocolMarshallerBuilder.<T>standard()
                 .jsonGenerator(operationInfo.hasPayloadMembers() ? createGenerator() : StructuredJsonGenerator.NO_OP)
-                .contentType(/*getContentType()*/"multipart/form-data")
+                .contentType(getContentType())
                 .operationInfo(operationInfo)
                 .originalRequest(origRequest)
                 .sendExplicitNullForPayload(true)
