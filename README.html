@@ -1,18 +1,17 @@
 <h1>Building the sample</h1>
-<p>Before proceeding, install a <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html">JDK</a> (must be Java 8 or later) and <a href="https://maven.apache.org/install.html">Apache Maven</a>.</p>
+<p>Before proceeding, install a <a href="https://jdk.java.net/archive/">JDK</a> (must be Java 11 or later) and <a href="https://maven.apache.org/install.html">Apache Maven</a>.</p>
 <p>Ensure <code>JAVA_HOME</code> is set correctly and the <code>mvn</code> executable is available on your PATH.</p>
-<p>There are two approaches to building the sample.</p>
-<ol>
-<li>You can compile just the sample and publish to a repository that handles dependency management like MavenCentral.  (Recommended)</li>
-<li>You can build a &quot;fat jar&quot; that contains all required dependencies; this jar can be added to your customers' classpath.</li>
-</ol>
-<h2>1. Building a single jar</h2>
 <p>Run the following command in a terminal/console.</p>
-<pre><code class="language-bash">mvn package
+<pre><code class="language-bash">mvn clean package
 </code></pre>
-<p>This compiles the sample into a jar located at <code>./target/anprcloud-sample-2.0-SNAPSHOT.jar</code>. Note that this jar does not include any dependencies.</p>
-<h2>2. Building a Standalone Jar</h2>
-<p>If your customers aren't using Maven or Gradle and you would prefer to distribute a single JAR with all dependencies, you can use the following command to build a fat jar.</p>
-<pre><code class="language-bash">mvn clean package -Pstandalone-jar
+<p>This compiles the sample into a jar located at <code>./target/anprcloud-sample-3.0-SNAPSHOT.jar</code>, and copies all the dependenciews into <code>./target/</code> directory.</p>
+<h1>Running the sample</h1>
+<pre><code class="language-bash">$JAVA_HOME/bin/java -jar ./target/anprcloud-sample-3.0-SNAPSHOT.jar api-eu.anpr-cloud.com STAGE REGION API_KEY IMAGE_PATH
 </code></pre>
-<p>This will compile the sample and package all dependencies into a jar located at <code>./target/anprcloud-sample-2.0-SNAPSHOT.jar</code>.</p>
+<p>This will run the sample with the following arguments:</p>
+<ol>
+    <li>STAGE: <code>free</code> for the free, and <code>prod</code> for the paid (productive) endpoint</li>
+    <li>REGION: for example <code>eur</code> for European region</li>
+    <li>API_KEY: your api key (check out the <a href="http://eu.anpr-cloud.com/dashboard/how-to-use">How To Use</a> page on the ANPR Cloud DevPortal)</li>
+    <li>IMAGE_PATH: the path to the image file that contains the license plate</li>
+</ol>

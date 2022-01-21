@@ -1,7 +1,7 @@
 /*
  *
  */
-package com.ar.anprcloud.client;
+package com.adaptiverecognition.anprcloud.client;
 
 import com.amazonaws.Protocol;
 import com.amazonaws.SdkClientException;
@@ -10,12 +10,12 @@ import com.amazonaws.opensdk.config.TimeoutConfiguration;
 import com.amazonaws.opensdk.retry.RetryPolicyBuilder;
 import com.amazonaws.retry.v2.RetryPolicyContext;
 import com.amazonaws.util.RuntimeHttpUtils;
-import com.ar.anprcloud.client.model.ANPRCloudRequest;
-import com.ar.anprcloud.client.model.ANPRCloudResult;
-import com.ar.anprcloud.client.model.ANPRCloudServiceException;
-import com.ar.anprcloud.client.model.InternalServerErrorException;
-import com.ar.anprcloud.client.model.RequestTimeoutException;
-import com.ar.anprcloud.client.model.ServiceUnavailableException;
+import com.adaptiverecognition.anprcloud.client.model.ANPRCloudRequest;
+import com.adaptiverecognition.anprcloud.client.model.ANPRCloudResult;
+import com.adaptiverecognition.anprcloud.client.model.ANPRCloudServiceException;
+import com.adaptiverecognition.anprcloud.client.model.InternalServerErrorException;
+import com.adaptiverecognition.anprcloud.client.model.RequestTimeoutException;
+import com.adaptiverecognition.anprcloud.client.model.ServiceUnavailableException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
